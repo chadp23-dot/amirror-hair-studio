@@ -401,16 +401,8 @@
   .stickybar .sb{background:var(--gold-bright); color:#221709;}
 
   /* ---------- BACK TO TOP ---------- */
-  .back-to-top{
-    position:fixed; left:50%; right:auto; bottom:76px; z-index:60;
-    transform:translateX(-50%);
-    display:inline-flex; align-items:center; justify-content:center; gap:6px;
-    min-width:56px; min-height:56px; padding:12px 18px; border-radius:999px;
-    background:var(--pine); color:var(--on-pine); border:2px solid var(--gold-bright);
-    box-shadow:var(--shadow);
-    font-family:inherit; font-size:14px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer;
-  }
-  .back-to-top:active{transform:translateX(-50%) translateY(2px);}
+  
+  
 
 
   /* ---------- FULL SCREEN PHOTO VIEWS (CSS :target, works with no JavaScript) ---------- */
@@ -501,7 +493,7 @@
 .sig-backtop:hover{background:#082a1f;}
 .sig-booknow{position:fixed; left:0; top:50%; transform:translateY(-50%); z-index:55; background:#0e3b2c; color:#f7efdc; text-decoration:none; font-weight:800; writing-mode:vertical-rl; font-family:"Barlow Condensed",sans-serif; letter-spacing:.08em; text-transform:uppercase; font-size:14px; padding:14px 6px; border-radius:0 10px 10px 0; box-shadow:3px 4px 14px rgba(7,30,66,.35); display:inline-flex; align-items:center; justify-content:center; width:30px; min-height:104px;}
 .sig-booknow:hover{background:#082a1f;}
-.sig-tab-arrow{flex:none; width:15px; height:15px; margin-top:7px;}
+.sig-tab-arrow{flex:none; width:15px; height:15px; margin-top:7px;}.sig-backtop .sig-tab-arrow{margin-top:0;margin-bottom:7px;}
 @media (max-width:900px){ .sig-booknow,.sig-backtop{width:26px; font-size:12px; min-height:92px; padding:12px 4px;} }
 </style>
 </head>
@@ -867,7 +859,7 @@
   <p class="copy">© 2026 Amirror Hair Studio. All rights reserved.</p>
 </footer>
 
-<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">↑ Top</button>
+
 
 <div class="stickybar">
   <a class="sc" href="tel:+17049077227">Call</a>
@@ -990,28 +982,6 @@
     });
   });
 
-  // Back to top — always visible, always reaches the very top.
-  var backToTop = document.getElementById('backToTop');
-  function forceTop(){
-    var root = document.documentElement;
-    var prevBehavior = root.style.scrollBehavior;
-    root.style.scrollBehavior = 'auto';
-    try { window.scrollTo({top:0, left:0, behavior:'instant'}); }
-    catch(e){ window.scrollTo(0, 0); }
-    root.scrollTop = 0;
-    if(document.body){ document.body.scrollTop = 0; }
-    root.style.scrollBehavior = prevBehavior;
-  }
-  function goToTop(){
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce){ forceTop(); return; }
-    try { window.scrollTo({top:0, left:0, behavior:'smooth'}); }
-    catch(e){ forceTop(); return; }
-    setTimeout(function(){ if(window.scrollY > 4){ forceTop(); } }, 1100);
-    setTimeout(function(){ if(window.scrollY > 4){ forceTop(); } }, 2000);
-  }
-  backToTop.addEventListener('click', goToTop);
-
   // Photo lightbox. Every photo on the page is a link to its own CSS
   // :target full screen view, so with JavaScript off the tap still opens
   // it full screen; with JavaScript on, this lightbox takes over instead.
@@ -1053,6 +1023,6 @@
   });
 </script>
 <a class="sig-booknow" href="#offer" aria-label="Book now, jump to the booking section">Book Now <svg class="sig-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 14l7 7 7-7"/></svg></a>
-<a class="sig-backtop" href="#top" aria-label="Back to top">Back To Top <svg class="sig-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V3"/><path d="M5 10l7-7 7 7"/></svg></a>
+<a class="sig-backtop" href="#top" aria-label="Back to top"><svg class="sig-tab-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V3"/><path d="M5 10l7-7 7 7"/></svg>Back To Top</a>
 </body>
 </html>
